@@ -1,0 +1,150 @@
+﻿/* Body & Background */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../images/login.jpg') no-repeat center;
+    background-size: cover;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Wrapper for login box */
+.wrapper {
+    background: linear-gradient(135deg, #ffffff, #f0f4ff);
+    padding: 45px 40px;
+    width: 380px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3), 0 4px 15px rgba(66, 133, 244, 0.15);
+    text-align: center;
+    color: #1a237e;
+    transition: box-shadow 0.3s ease;
+    user-select: none;
+}
+
+    .wrapper:hover,
+    .wrapper:focus-within {
+        box-shadow: 0 12px 36px rgba(66, 133, 244, 0.5), 0 6px 30px rgba(66, 133, 244, 0.25);
+    }
+
+/* Smooth entrance animation */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wrapper {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.5s forwards ease-out;
+}
+
+/* Logo container styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+/* Icon styling */
+.icon {
+    width: 56px;
+    height: 56px;
+    user-select: none;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 3px rgba(66, 133, 244, 0.2));
+}
+
+/* Logo text styling */
+.logo-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #4285f4;
+    text-transform: uppercase;
+    letter-spacing: -0.4px;
+    user-select: none;
+    margin: 0;
+    line-height: 1.1;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: left;
+}
+
+.price-text {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.comparison-text {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+/* Login heading */
+h2 {
+    color: #3a50b5;
+    font-weight: 700;
+    margin-bottom: 40px;
+    font-size: 30px;
+    user-select: none;
+}
+
+/* Form container */
+form {
+    display: flex;
+    justify-content: center;
+}
+
+/* Google login button enhancements */
+.google-login-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 300px;
+    height: 52px;
+    background: linear-gradient(90deg, #4a90e2, #357ae8);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(53, 122, 232, 0.45), 0 2px 6px rgba(56, 108, 216, 0.35);
+    transition: background 0.35s ease, box-shadow 0.3s ease, transform 0.18s ease;
+    user-select: none;
+}
+
+    .google-login-btn:hover,
+    .google-login-btn:focus {
+        background: linear-gradient(90deg, #356ac6, #234f9c);
+        box-shadow: 0 8px 18px rgba(32, 84, 157, 0.6), 0 3px 10px rgba(19, 51, 98, 0.45);
+        outline: none;
+        transform: translateY(-3px);
+    }
+
+    .google-login-btn:active {
+        transform: translateY(1px);
+        box-shadow: 0 4px 7px rgba(19, 51, 98, 0.55);
+    }
+
+/* Google logo inside button */
+.google-logo {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.2));
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Keyboard focus for accessibility */
+.google-login-btn:focus-visible {
+    outline: 3px solid #a4c0ff;
+    outline-offset: 4px;
+}

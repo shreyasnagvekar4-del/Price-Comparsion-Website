@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home - Price Comparison</title>
+    <link rel="stylesheet" href="../css/StyleSheet2.css" />  <!-- Your existing stylesheet -->
+    <style>
+        /* Additional styles for the products section with background image */
+        .products-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(227, 242, 253, 0.8) 0%, rgba(187, 222, 251, 0.8) 100%), /* Semi-transparent overlay for readability */
+            url('../images/login.jpg') no-repeat center center; /* Fixed: Use 'login.jpg' (no extra .jpg) */
+            background-size: cover; /* Scales the image to cover the section */
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+            .products-section h3 {
+                text-align: center;
+                color: #333;
+                margin-bottom: 20px;
+                font-size: 24px;
+                font-weight: 600;
+            }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Exactly 3 products per row */
+            gap: 25px; /* Increased gap for better spacing */
+            margin-top: 10px;
+            animation: fadeIn 0.5s ease-in; /* Subtle fade-in animation for interactivity */
+            /* Removed background image from grid to avoid conflict */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-item {
+            width: 100%; /* Full width within grid cell */
+            height: 220px; /* Slightly taller for better proportion */
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white for contrast over image */
+            transition: all 0.3s ease; /* Smoother, more interactive transitions */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer; /* Indicates clickability */
+        }
+
+            .product-item:hover {
+                transform: translateY(-8px) scale(1.03); /* Lift and slight scale for interactivity */
+                box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* Glow effect */
+                border-color: #4285f4; /* Accent color on hover */
+            }
+
+            .product-item a {
+                display: block;
+                text-decoration: none;
+                color: inherit;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 15px;
+            }
+
+            .product-item img {
+                max-width: 75%;
+                max-height: 55%;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-bottom: 10px;
+                transition: transform 0.3s ease; /* Image zoom on hover */
+            }
+
+            .product-item:hover img {
+                transform: scale(1.1); /* Interactive image zoom */
+            }
+
+            .product-item p {
+                margin: 0;
+                font-weight: 600;
+                font-size: 16px;
+                color: #555;
+                transition: color 0.3s ease;
+            }
+
+            .product-item:hover p {
+                color: #4285f4; /* Text color change for interactivity */
+            }
+
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(1, 1fr); /* 1 product per row on mobile */
+                gap: 15px;
+            }
+
+            .product-item {
+                height: 180px; /* Shorter on mobile */
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 products per row on tablets */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-left">
+            <!-- Hamburger Menu -->
+            <button class="menu-btn" id="menu-btn" aria-label="Toggle Menu" aria-expanded="false" aria-controls="menu-dropdown">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <img src="../images/logo.png.png" alt="" class="icon" aria-hidden="true" />  <!-- Fixed: Removed extra .png -->
+            <h1 class="logo-text">
+                <span class="price-text">PRICE</span><br />
+                <span class="comparison-text">COMPARISON</span>
+            </h1>
+
+            <!-- Search Bar -->
+            <!-- Menu dropdown -->
+            <nav class="menu-dropdown" id="menu-dropdown" role="menu" aria-hidden="true" tabindex="-1">
+                <a href="dashboard2.html" aria-current="page" role="menuitem" tabindex="0">
+                    <!-- Home icon SVG -->
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg>
+                    Home
+                </a>
+
+                <a href="saved.html" role="menuitem" tabindex="0">
+                    <!-- Bookmark icon SVG -->
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" /></svg>
+                    Saved Products
+                </a>
+                <a href="price-alerts.html" role="menuitem" tabindex="0">
+                    <!-- Bell icon SVG -->
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 22a2 2 0 002-2H10a2 2 0 002 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 00-3 0v.68C7.63 5.36 6 7.92 6 11v5l-1.7 1.7a1 1 0 001.4 1.4L7 18h10l1.3 1.1a1 1 0 001.4-1.4L18 16z" /></svg>
+                    Price Alerts
+                </a>
+            </nav>
+        </div>
+
+        <!-- Profile icon on top right -->
+        <div class="profile-icon" id="profile-icon" title="Profile Menu" aria-label="Profile Menu" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="profile-dropdown">
+            <img id="profile-photo" src="default-avatar.png" alt="Profile Photo" />
+        </div>
+
+        <!-- Profile dropdown below profile icon -->
+        <div class="profile-dropdown" id="profile-dropdown" role="menu" aria-hidden="true" tabindex="-1">
+            <div class="user-info">
+                <img id="dropdown-photo" src="default-avatar.png" alt="User Photo" />
+                <div>
+                    <p class="user-name" id="dropdown-name">User Name</p>
+                    <p class="user-email" id="dropdown-email">user@example.com</p>
+                </div>
+            </div>
+            <button class="logout-btn" id="logout-btn" role="menuitem" aria-label="Logout">Logout</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h2>Welcome to Price Comparison!</h2>
+        <p>Compare prices across e-commerce platforms and get the best deals. Use the search bar to find products, save your favorites, and set price alerts.</p>
+
+        <!-- New Products Section -->
+        <section class="products-section">
+            <h3>Popular Electronics</h3>
+            <div class="products-grid">
+                <div class="product-item">
+                    <a href="tv.html" aria-label="Compare TV prices">
+                        <img src="../images/television.png" alt="Television" />
+                        <p>Television</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="laptop.html" aria-label="Compare Laptop prices">
+                        <img src="../images/laptop.png" alt="Laptop" />
+                        <p>Laptop</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="smartphone.html" aria-label="Compare Smartphone prices">
+                        <img src="../images/smartphone.png" alt="Smartphone" />
+                        <p>Smartphone</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="headphones.html" aria-label="Compare Headphones prices">
+                        <img src="../images/headphones.png" alt="Headphones" />
+                        <p>Headphones</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="camera.html" aria-label="Compare Camera prices">
+                        <img src="../images/camera.png" alt="Camera" />
+                        <p>Camera</p>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="tablets.html" aria-label="Compare Tablet prices">
+                        <img src="../images/tablet.png" alt="Tablet" />
+                        <p>Tablet</p>
+                    </a>
+                </div>
+                <!-- Add more products as needed -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuBtn = document.getElementById("menu-btn");
+            const menuDropdown = document.getElementById("menu-dropdown");
+            const profileIcon = document.getElementById("profile-icon");
+            const profileDropdown = document.getElementById("profile-dropdown");
+            const profilePhoto = document.getElementById("profile-photo");
+            const dropdownPhoto = document.getElementById("dropdown-photo");
+            const dropdownName = document.getElementById("dropdown-name");
+            const dropdownEmail = document.getElementById("dropdown-email");
+            const logoutBtn = document.getElementById("logout-btn");
+
+            // Load user data from localStorage
+            const userName = localStorage.getItem("userName") || "User Name";
+            const userEmail = localStorage.getItem("userEmail") || "user@example.com";
+            const userPhoto = localStorage.getItem("userPhoto") || "default-avatar.png";
+
+            profilePhoto.src = userPhoto;
+            dropdownPhoto.src = userPhoto;
+            dropdownName.textContent = userName;
+            dropdownEmail.textContent = userEmail;
+
+            // Toggle menu dropdown
+            menuBtn.addEventListener("click", () => {
+                const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+                menuBtn.setAttribute("aria-expanded", !expanded);
+                menuDropdown.classList.toggle("active");
+                menuDropdown.setAttribute("aria-hidden", expanded);
+                menuBtn.classList.toggle("active");
+            });
+
+            // Toggle profile dropdown
+            profileIcon.addEventListener("click", () => {
+                const expanded = profileIcon.getAttribute("aria-expanded") === "true";
+                profileIcon.setAttribute("aria-expanded", !expanded);
+                profileDropdown.classList.toggle("active");
+                profileDropdown.setAttribute("aria-hidden", expanded);
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener("click", (e) => {
+                if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
+                    menuDropdown.classList.remove("active");
+                    menuBtn.setAttribute("aria-expanded", false);
+                    menuDropdown.setAttribute("aria-hidden", true);
+                    menuBtn.classList.remove("active");
+                }
+                if (!profileIcon.contains(e.target) && !profileDropdown.contains(e.target)) {
+                    profileDropdown.classList.remove("active");
+
+                    profileIcon.setAttribute("aria-expanded", false);
+                    profileDropdown.setAttribute("aria-hidden", true);
+                }
+            });
+
+
+
+            // Logout
+            logoutBtn.addEventListener("click", () => {
+                localStorage.clear();
+                // Replace with your logout logic
+                window.location.href = "index.html";
+            });
+        });
+    </script>
+</body>
+</html>
