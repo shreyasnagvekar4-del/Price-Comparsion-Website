@@ -222,31 +222,31 @@ Once deployed, Firebase Cloud Functions automatically detect price drops and sen
 
 ## Product Section
 
-![Product Section](Screenshots/Product Section.png)
+![Product Section](Screenshots/ProductSection.png)
 
 ---
 
 ## Product Details
 
-![Product Details](Screenshots/Product Details.png)
+![Product Details](Screenshots/ProductDetails.png)
 
 ---
 
 ## Saved Products
 
-![Saved Products](Screenshots/Saved Products.png)
+![Saved Products](Screenshots/SavedProducts.png)
 
 ---
 
 ## Price Alerts
 
-![Price Alerts](Screenshots/Price Alerts.png)
+![Price Alerts](Screenshots/PriceAlerts.png)
 
 ---
 
 ## Price Drop Email Notification
 
-![Price Drop Alert](Screenshots/Price Drop Alert.png)
+![Price Drop Alert](Screenshots/PriceDropAlert.png)
 # 🔒 Security
 
 - Firebase Admin SDK keys are **not included**.
